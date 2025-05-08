@@ -29,7 +29,11 @@
 #endif
      
 #ifdef EMONTX4
-  #define SSpin PIN_PB5
+  #ifdef PIN_PB5           //Available on AVR128DB48 (EMONTX4) but not AVR128DB28 DIP
+    #define SSpin PIN_PB5  //EMONTX4 
+  #else
+    #define SSpin PIN_PC3  //AVR128DB28 28-pin DIP for breadboard and prototyping work
+  #endif
   #define MOSIpin PIN_PC0
   #define MISOpin PIN_PC1
   #define SCKpin PIN_PC2
